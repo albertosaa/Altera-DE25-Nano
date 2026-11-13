@@ -1,7 +1,7 @@
 # Projeto DE25-Nano
 
 <p align="center">
-<img src="img/DE25.jpg" alt="DE25-nano" width="40%" /> 
+<img src="img/DE-25.jpg" alt="DE25-nano" width="40%" /> 
 </p>
 
 
