@@ -1,5 +1,10 @@
 # Projeto DE25-Nano
 
+<p align="center">
+<img src="img/DE25.jpg" alt="DE25-nano" width="40%" /> 
+</p>
+
+
 Código FPGA, software Linux e documentação para a Terasic DE25-Nano.
 
 O primeiro acesso SSH por USB foi validado. A aplicação do projeto ainda será definida.
