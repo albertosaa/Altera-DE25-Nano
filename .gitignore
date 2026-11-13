@@ -1,0 +1,43 @@
+# Configurações locais e credenciais
+.agents/
+.aws/
+.codex/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Quartus: manter fontes, .qpf, .qsf e .sdc
+db/
+incremental_db/
+output_files/
+*.qws
+*.qdf
+*.rpt
+*.summary
+*.sof
+*.pof
+*.jic
+*.rbf
+
+# Compilação e simulação
+build/
+work/
+*.o
+*.a
+*.so
+*.vcd
+*.fst
+
+# Python e editores
+__pycache__/
+*.pyc
+.venv/
+*~
+*.swp
+.DS_Store
+
+# Imagens de cartão SD
+*.img
+*.wic
