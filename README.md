@@ -7,7 +7,11 @@
 
 Código FPGA, software Linux e documentação para a Terasic DE25-Nano.
 
-O primeiro acesso SSH por USB foi validado. A aplicação do projeto ainda será definida.
+O acesso SSH por USB e Ethernet direta foi validado. O primeiro projeto é
+[MatrixMultiplication](software/MatrixMultiplication/README.md): multiplicação
+de matrizes 2×2 no ARM e na FPGA, com comparação dos resultados.
+O teste na placa física passou. Veja o
+[guia completo de compilação, programação e execução](docs/GUIA_MATRIX_MULTIPLICATION.md).
 
 ## Estrutura
 
@@ -21,7 +25,7 @@ O primeiro acesso SSH por USB foi validado. A aplicação do projeto ainda será
 
 ## Acesso à placa
 
-Consulte o [guia SSH por USB](docs/GUIA_SSH_USB_DE25_NANO.md).
+Consulte o [guia SSH por USB e Ethernet direta](docs/GUIA_SSH_USB_DE25_NANO.md).
 
 Com a rede USB configurada, conecte a porta HPS USB ao computador e execute:
 
@@ -36,7 +40,9 @@ A configuração USB documentada ainda é temporária.
 - Placa: Terasic DE25-Nano.
 - Kernel Linux da placa: `6.12.11-gd7d192a9ddd9`.
 - Computador de desenvolvimento: Linux.
-- Versão do Quartus e imagem Linux utilizada: a registrar.
+- Quartus Prime Pro 26.3.0 Build 114; GHRD original da demonstração 25.1.
+- Cross-compiling validado com GCC 12.2.0 AArch64 Linux (Vitis).
+- Versão/distribuição da imagem Linux: a registrar.
 
 ## Organização do desenvolvimento
 

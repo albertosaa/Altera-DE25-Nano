@@ -1,0 +1,12 @@
+# Projeto didático para síntese/visualização do núcleo. Não é bitstream da placa.
+# Família e dispositivo copiados do GHRD fornecido pela Terasic.
+set_global_assignment -name FAMILY "Agilex 5"
+set_global_assignment -name DEVICE A5EB013BB23BE4SCS
+set_global_assignment -name TOP_LEVEL_ENTITY matrix_mm
+set_global_assignment -name VERILOG_FILE ../rtl/matrix_mm.v
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY ../build/output_files
+set_global_assignment -name SDC_FILE matrix.sdc
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 2
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
+set_global_assignment -name LAST_QUARTUS_VERSION "26.3.0 Pro Edition"

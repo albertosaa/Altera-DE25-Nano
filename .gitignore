@@ -12,6 +12,10 @@
 db/
 incremental_db/
 output_files/
+dni/
+qdb/
+*.qmsgdb
+*.qsys_edit
 *.qws
 *.qdf
 *.rpt

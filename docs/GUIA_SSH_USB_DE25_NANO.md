@@ -1,6 +1,8 @@
-# Acesso SSH à Terasic DE25-Nano por USB
+# Acesso SSH à Terasic DE25-Nano por USB e Ethernet
 
-Este guia registra o procedimento que funcionou em um computador Linux e uma DE25-Nano com Linux instalado. O objetivo é acessar a placa por SSH sem precisar de roteador ou cabo Ethernet.
+Este guia registra os procedimentos que funcionaram em um computador Linux e uma DE25-Nano com Linux instalado. O objetivo é acessar a placa por SSH sem precisar de roteador, usando rede USB ou um cabo Ethernet direto.
+
+As etapas 1 a 9 descrevem a conexão por USB. A seção 10 apresenta a conexão Ethernet direta, sem roteador, validada em 14/11/2026. A seção 11 descreve a alternativa com roteador, ainda não testada neste procedimento.
 
 ## 1. Materiais e portas utilizadas
 
@@ -252,9 +254,63 @@ nmcli -t -f NAME,DEVICE connection show --active
 
 As saídas desses comandos ainda não foram coletadas neste procedimento.
 
-## 10. Alternativa: SSH por Ethernet
+## 10. SSH por Ethernet direto, sem roteador
 
 A rede USB é independente da Ethernet. Não é necessário repetir a configuração de gadget USB para usar a porta Ethernet.
+
+**O acesso SSH com um cabo Ethernet diretamente entre a placa e o laptop foi testado e funcionou.** O servidor SSH da placa já estava ativo.
+
+### 10.1. Conectar o cabo
+
+Mantenha a placa alimentada e conecte um cabo Ethernet entre a porta Ethernet da DE25-Nano e a porta Ethernet do laptop. Use inicialmente o picocom ou o SSH USB para configurar o lado da placa.
+
+### 10.2. Configurar a placa
+
+Execute **na placa**:
+
+```bash
+sudo ip addr add 192.168.8.2/24 dev eth0
+sudo ip link set eth0 up
+```
+
+### 10.3. Configurar o laptop
+
+Execute **no laptop**:
+
+```bash
+sudo ip addr add 192.168.8.1/24 dev enp0s31f6
+sudo ip link set enp0s31f6 up
+```
+
+`enp0s31f6` é a interface Ethernet do laptop utilizado. Em outro computador, consulte `ip -br addr` e substitua pelo nome da interface Ethernet correspondente.
+
+### 10.4. Testar e acessar por SSH
+
+Execute **no laptop**:
+
+```bash
+ping -c 3 192.168.8.2
+ssh terasic@192.168.8.2
+```
+
+Informe a senha do usuário `terasic`. Na primeira conexão com esse endereço, confira o destino e confirme a chave do servidor se solicitado.
+
+| Equipamento | Interface | IPv4 |
+| --- | --- | --- |
+| Laptop | `enp0s31f6` no caso testado | `192.168.8.1/24` |
+| DE25-Nano | `eth0` | `192.168.8.2/24` |
+
+Não é necessário configurar gateway ou DNS para essa conexão direta. A faixa `192.168.8.0/24` é diferente da rede USB (`192.168.7.0/24`) e do Wi-Fi utilizado (`192.168.1.0/24`). Em outro ambiente, escolha uma faixa que não conflite com as redes existentes.
+
+Depois de estabelecer o SSH pela Ethernet, a conexão USB não é necessária para transportar essa sessão; mantenha a alimentação da placa.
+
+### 10.5. Persistência e repetição dos comandos
+
+**Os endereços foram configurados temporariamente.** Podem ser perdidos ao reiniciar os equipamentos ou reconfigurar as interfaces. A configuração Ethernet permanente ainda não foi realizada.
+
+Se repetir `ip addr add` e aparecer `RTNETLINK answers: File exists`, confira se o endereço já está presente com `ip -br addr`. Se o IP correto estiver configurado, prossiga para o teste e o SSH sem adicioná-lo novamente.
+
+## 11. Alternativa: SSH por Ethernet com roteador
 
 Se o Linux da placa estiver configurado para DHCP, ao conectar a placa a um roteador ela poderá receber um IP automaticamente. O computador deve estar na mesma rede, por cabo ou Wi-Fi.
 
@@ -278,7 +334,7 @@ sudo dhclient eth0
 ip -br addr eth0
 ```
 
-Essa alternativa não foi testada nesta sessão. Também é possível conectar placa e computador diretamente por Ethernet, sem roteador, atribuindo IPs fixos às duas interfaces; essa configuração não foi realizada aqui.
+Essa alternativa com roteador e DHCP não foi testada neste procedimento. O IP usado no comando SSH deve ser o atribuído à interface Ethernet da placa nessa rede.
 
 ## Referências
 
