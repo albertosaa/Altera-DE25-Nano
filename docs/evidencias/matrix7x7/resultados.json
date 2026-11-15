@@ -1,0 +1,66 @@
+{
+  "data_experimento": "2026-11-15",
+  "origem_saida_placa": "Saída fornecida pelo usuário na conversa; não capturada por SSH pelo agente.",
+  "corretude_49_resultados": true,
+  "dimensao": 7,
+  "entrada_bits_com_sinal": 16,
+  "saida_rtl_bits": 35,
+  "arm": {
+    "nucleo_logico": 0,
+    "tipo_nucleo": "não identificado nesta execução",
+    "frequencia_hz": null,
+    "amostras": 9,
+    "multiplicacoes_por_amostra": 10000,
+    "mediana_ns_por_multiplicacao": 1378.2,
+    "minimo_ns_por_multiplicacao": 1376.61,
+    "nove_tempos_brutos": "não registrados"
+  },
+  "fpga": {
+    "clock_nominal_hz": 100000000,
+    "ciclos_por_multiplicacao": 4,
+    "operacoes_no_lote": 10000,
+    "ciclos_contados_no_lote": 40000,
+    "ns_por_multiplicacao": 40.0,
+    "medicao": "contador interno convertido pelo clock nominal, sem osciloscópio"
+  },
+  "razao_arm_mediana_sobre_fpga": 34.455,
+  "quartus": {
+    "versao": "26.3.0 Build 114 Pro",
+    "dsp_usados": 147,
+    "dsp_disponiveis": 188,
+    "alms_usados": 18986,
+    "alms_disponiveis": 46800,
+    "setup_slack_ns": 2.782,
+    "hold_slack_minimo_ns": 0.0,
+    "fmax_dominio_calculo_mhz": 138.54,
+    "timing_closure": "Pass",
+    "design_closure_global": "Fail; avisos herdados do GHRD documentados no relatório"
+  },
+  "artefatos_locais": {
+    "software/MatrixMultiplication7x7/build/MatrixMultiplication7x7": {
+      "bytes": 736312,
+      "sha256": "3f9eb300412274124c8bb43bb38756443459998bdb1f94b94bdee2b75402017b"
+    },
+    "fpga/MatrixMultiplication7x7/build/ghrd_7x7/output_files/golden_top_hps.sof": {
+      "bytes": 2268956,
+      "sha256": "3f88acfce03fcd8adde530f363d38eca86a8eb73b9de1721e520eb1ed6b90a91"
+    },
+    "fpga/MatrixMultiplication7x7/rtl/matrix7_mm.v": {
+      "bytes": 5360,
+      "sha256": "a4bc7bab7e349b2f1be2f0da5a547f7c9b5a1ef8ac371b863161e341cb99bc4a"
+    },
+    "software/MatrixMultiplication7x7/main.c": {
+      "bytes": 8570,
+      "sha256": "e62916fda6f0a605895a4e35646d7ab5ace3158057274023cdaa0b38882e2af4"
+    },
+    "software/MatrixMultiplication7x7/matrix.c": {
+      "bytes": 1015,
+      "sha256": "04e6e1c924c7ad32e4a3e6a4ad7e65cbe28a3d292c2ebd4808313756eac8d549"
+    },
+    "software/MatrixMultiplication7x7/Makefile": {
+      "bytes": 1447,
+      "sha256": "d2bdfedb0cfee103f0bb9421a73fc3bfa9cb9188f3e4702ca26a76416d5f3f9c"
+    }
+  },
+  "nota_hashes": "Identificam os artefatos locais no momento do relatório; o hash do executável/bitstream efetivamente usado na placa não foi coletado."
+}

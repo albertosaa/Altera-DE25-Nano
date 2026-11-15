@@ -13,6 +13,14 @@ de matrizes 2×2 no ARM e na FPGA, com comparação dos resultados.
 O teste na placa física passou. Veja o
 [guia completo de compilação, programação e execução](docs/GUIA_MATRIX_MULTIPLICATION.md).
 
+A versão [MatrixMultiplication7x7](software/MatrixMultiplication7x7/README.md)
+usa matrizes aleatórias com sinal e compara tempos de cálculo no ARM e na FPGA,
+com contador interno de ciclos no circuito.
+O teste físico confirmou resultados iguais, com mediana de **1.378,20 ns no
+ARM** e **40 ns na FPGA**, excluindo comunicação. O
+[relatório do experimento 7×7](docs/RELATORIO_MATRIX_MULTIPLICATION_7x7.md)
+inclui a escolha da dimensão, a análise de DSPs e o método de medição.
+
 ## Estrutura
 
 - `docs/`: configuração e documentação da placa.

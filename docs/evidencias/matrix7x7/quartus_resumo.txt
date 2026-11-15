@@ -1,0 +1,135 @@
+Flow report for golden_top
+Sun Nov 15 13:05:27 2026
+Quartus Prime Version 26.3.0 Build 114 10/14/2026 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Flow Summary
+  2. Flow Settings
+  3. Flow Non-Default Global Settings
+  4. Flow Elapsed Time
+  5. Flow OS Summary
+  6. Flow Log
+  7. Legal Notice
+
+
+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++---------------------------------+--------------------------------------------+
+; Flow Status                     ; Successful - Sun Nov 15 13:05:26 2026      ;
+; Quartus Prime Version           ; 26.3.0 Build 114 10/14/2026 SC Pro Edition ;
+; Revision Name                   ; golden_top                                 ;
+; Top-level Entity Name           ; golden_top                                 ;
+; Family                          ; Agilex 5                                   ;
+; Device                          ; A5EB013BB23BE4SCS                          ;
+; Timing Models                   ; Final                                      ;
+; Power Models                    ; Final                                      ;
+; Device Status                   ; Final                                      ;
+; Logic utilization (in ALMs)     ; 18,986 / 46,800 ( 41 % )                   ;
+; Total dedicated logic registers ; 26893                                      ;
+; Total pins                      ; 284 / 351 ( 81 % )                         ;
+; Total block memory bits         ; 2,098,688 / 7,331,840 ( 29 % )             ;
+; Total RAM Blocks                ; 131 / 358 ( 37 % )                         ;
+; Total DSP Blocks                ; 147 / 188 ( 78 % )                         ;
+; Total HSSI HPS                  ; 1 / 1 ( 100 % )                            ;
+; Total PLLs                      ; 2 / 11 ( 18 % )                            ;
++---------------------------------+--------------------------------------------+
+
+
++-----------------------------------------+
+
++-----------------------------------------------------------------------------------+
+; Design Closure Summary                                                            ;
++--------------------------------------------------------+--------------------------+
+; Panel Name                                             ; Result Flag              ;
++--------------------------------------------------------+--------------------------+
+; Design Closure Summary                                 ; Fail                     ;
+;   Timing Closure                                       ; Pass                     ;
+;     Setup Summary                                      ; Pass                     ;
+;     Hold Summary                                       ; Pass                     ;
+;     Recovery Summary                                   ; Pass                     ;
+;     Removal Summary                                    ; Pass                     ;
+;     Setup Data Delay Summary                           ; Not Found                ;
+;     Recovery Data Delay Summary                        ; Not Found                ;
+;     Minimum Pulse Width Summary                        ; Pass                     ;
+;     Max Skew Summary                                   ; Not Found                ;
+;     Max Clock Skew Summary                             ; Not Found                ;
+;     Net Delay Summary                                  ; Not Found                ;
+;     Metastability Summary                              ; Pass                     ;
+;     Double Data Rate (DDR) Summary                     ; Not Found                ;
+;     Transmitter Channel-to-Channel Skew (TCCS) Summary ; Not Found                ;
+;     Receiver Input Skew Margin (RSKM) Summary          ; Not Found                ;
+;   Design Assistant Summary                             ; High Severity Violations ;
+;   Unconstrained Paths                                  ; Fail                     ;
++--------------------------------------------------------+--------------------------+
+
++--------------------------------------------------------------------------------------------------+
+; Fmax Summary                                                                                     ;
++------------+-----------------+--------------------------+------+---------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name               ; Note ; Worst-Case Operating Conditions ;
++------------+-----------------+--------------------------+------+---------------------------------+
+; 20.12 MHz  ; 20.12 MHz       ; altera_reserved_tck      ;      ; Slow fix4 100C Model            ;
+; 138.54 MHz ; 138.54 MHz      ; pll_inst|iopll_0_outclk0 ;      ; Slow fix4 0C Model              ;
++------------+-----------------+--------------------------+------+---------------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+Delay Models:
+Slow fix4 100C Model
+Slow fix4 0C Model
+Slow fix4a 0C Model
+Fast fix4 0C Model
+
++----------------------------------------------------------------------------------------------------------+
+; Setup Summary                                                                                            ;
++--------------------------+--------+---------------+--------------------+---------------------------------+
+; Clock                    ; Slack  ; End Point TNS ; Failing End Points ; Worst-Case Operating Conditions ;
++--------------------------+--------+---------------+--------------------+---------------------------------+
+; pll_inst|iopll_0_outclk0 ; 2.782  ; 0.000         ; 0                  ; Slow fix4 0C Model              ;
+; altera_reserved_tck      ; 12.809 ; 0.000         ; 0                  ; Slow fix4 100C Model            ;
++--------------------------+--------+---------------+--------------------+---------------------------------+
+Delay Models:
+Slow fix4 100C Model
+Slow fix4 0C Model
+Slow fix4a 0C Model
+Fast fix4 0C Model
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Summary                                                                                                                                                       ;
++-------------------------------------------------------------------------------------+-------+---------------+--------------------+---------------------------------+
+; Clock                                                                               ; Slack ; End Point TNS ; Failing End Points ; Worst-Case Operating Conditions ;
++-------------------------------------------------------------------------------------+-------+---------------+--------------------+---------------------------------+
+; pll_inst|iopll_0_outclk0                                                            ; 0.000 ; 0.000         ; 0                  ; Fast fix4 0C Model              ;
+; altera_reserved_tck                                                                 ; 0.096 ; 0.000         ; 0                  ; Fast fix4 0C Model              ;
+; soc_inst|subsys_hps|emif_hps|emif_io96b_hps|emif_0_lpddr4|emif_0_lpddr4_0_phy_clk_0 ; 0.376 ; 0.000         ; 0                  ; Fast fix4 0C Model              ;
++-------------------------------------------------------------------------------------+-------+---------------+--------------------+---------------------------------+
+Delay Models:
+Slow fix4 100C Model
+Slow fix4 0C Model
+Slow fix4a 0C Model
+Fast fix4 0C Model
+
++------------------------------------------------------------------+
+; Unconstrained Paths Summary                                      ;
++---------------------------------------------------+-------+------+
+; Property                                          ; Setup ; Hold ;
++---------------------------------------------------+-------+------+
+; Illegal Clocks                                    ; 0     ; 0    ;
+; Unconstrained Clocks                              ; 0     ; 0    ;
+; Unconstrained Input Ports                         ; 0     ; 0    ;
+; Paths from Unconstrained Input Ports (Pairs-Only) ; 0     ; 0    ;
+; Unconstrained Output Ports                        ; 4     ; 4    ;
+; Paths to Unconstrained Output Ports (Pairs-Only)  ; 4     ; 4    ;
++---------------------------------------------------+-------+------+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; LED[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[7]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
