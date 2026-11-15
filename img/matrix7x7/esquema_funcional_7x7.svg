@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<title>DE25-Nano: multiplicador inteiro paralelo 7 por 7</title>
+<desc>Ilustração funcional do módulo matrix7_mm. Uma célula com sete produtos e três níveis de soma é replicada 49 vezes. Seis produtos por célula usam DSPs e um usa ALMs. Quatro estágios registrados a 100 MHz.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#354655"/></marker></defs>
+<rect width="1600" height="1100" fill="white"/>
+<g font-family="DejaVu Sans, sans-serif" fill="#182b3b">
+
+<text x="55" y="53" font-size="34" text-anchor="start" font-weight="bold" fill="#182b3b">DE25-Nano · Multiplicação inteira paralela 7×7</text>
+<text x="55" y="91" font-size="23" text-anchor="start" font-weight="normal" fill="#182b3b">Visão funcional do RTL e detalhe de uma das 49 células de saída</text>
+<rect x="582" y="128" width="965" height="192" rx="12" fill="#fafcfe" stroke="#6e8293" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="600" y="154" font-size="20" text-anchor="start" font-weight="bold" fill="#182b3b">FPGA · matrix7_mm</text>
+<rect x="45" y="180" width="235" height="95" rx="8" fill="#e7edf1" stroke="#354655" stroke-width="2"/>
+<text x="162.5" y="220.48" font-size="22" text-anchor="middle" font-weight="normal" fill="#182b3b">ARM / Linux</text>
+<text x="162.5" y="249.48" font-size="22" text-anchor="middle" font-weight="normal" fill="#182b3b">C e comparação</text>
+<rect x="325" y="180" width="220" height="95" rx="8" fill="#edf4fa" stroke="#354655" stroke-width="2"/>
+<text x="435.0" y="220.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">Ponte lightweight</text>
+<text x="435.0" y="247.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">Avalon-MM · 32 bits</text>
+<rect x="610" y="180" width="225" height="95" rx="8" fill="#edf4fa" stroke="#354655" stroke-width="2"/>
+<text x="722.5" y="220.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">Registradores A/B</text>
+<text x="722.5" y="247.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">49 × 16 bits cada</text>
+<rect x="895" y="180" width="230" height="95" rx="8" fill="#edf4fa" stroke="#354655" stroke-width="2"/>
+<text x="1010.0" y="220.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">49 células paralelas</text>
+<text x="1010.0" y="247.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">4 estágios de cálculo</text>
+<rect x="1185" y="180" width="325" height="95" rx="8" fill="#edf4fa" stroke="#354655" stroke-width="2"/>
+<text x="1347.5" y="220.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">49 resultados C · 35 bits</text>
+<text x="1347.5" y="247.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">Leitura com sinal em 64 bits</text>
+<path d="M280,227 L325,227" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="325,227 315,222 315,232" fill="#354655"/>
+<path d="M545,227 L610,227" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="610,227 600,222 600,232" fill="#354655"/>
+<path d="M835,227 L895,227" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="895,227 885,222 885,232" fill="#354655"/>
+<path d="M1125,227 L1185,227" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="1185,227 1175,222 1175,232" fill="#354655"/>
+<path d="M1450,275 V306 H435 V275" fill="none" stroke="#354655" stroke-width="2"/><polygon points="435,275 430,285 440,285" fill="#354655"/>
+<text x="930" y="301" font-size="18" text-anchor="middle" font-weight="normal" fill="#182b3b">Leitura de resultados e estado</text>
+<text x="55" y="355" font-size="22" text-anchor="start" font-weight="normal" fill="#182b3b">Controle: START · DONE · busy · RUNS · CYCLES       Clock: 100 MHz       Latência: 4 ciclos = 40 ns nominais</text>
+<line x1="55" y1="381" x2="1545" y2="381" stroke="#b7c4cf" stroke-width="2"/>
+<text x="55" y="421" font-size="28" text-anchor="start" font-weight="bold" fill="#182b3b">Detalhe de C[i,j] = Σ A[i,k] × B[k,j], com k = 0…6</text>
+<text x="55" y="453" font-size="21" text-anchor="start" font-weight="normal" fill="#182b3b">Entradas inteiras de 16 bits com sinal. A célula é replicada para i e j de 0 a 6. R indica registrador.</text>
+<text x="100" y="499" font-size="22" text-anchor="start" font-weight="bold" fill="#182b3b">Ciclo 1 · produtos</text>
+<text x="535" y="499" font-size="22" text-anchor="start" font-weight="bold" fill="#182b3b">Ciclo 2 · pares</text>
+<text x="875" y="499" font-size="22" text-anchor="start" font-weight="bold" fill="#182b3b">Ciclo 3 · grupos</text>
+<text x="1230" y="499" font-size="22" text-anchor="start" font-weight="bold" fill="#182b3b">Ciclo 4 · saída</text>
+<rect x="100" y="527" width="325" height="46" rx="8" fill="#e7f1fa" stroke="#354655" stroke-width="2"/>
+<text x="262.5" y="556.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">p0 = A[i,0] × B[0,j]   | R32</text>
+<rect x="100" y="587" width="325" height="46" rx="8" fill="#e7f1fa" stroke="#354655" stroke-width="2"/>
+<text x="262.5" y="616.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">p1 = A[i,1] × B[1,j]   | R32</text>
+<rect x="100" y="647" width="325" height="46" rx="8" fill="#e7f1fa" stroke="#354655" stroke-width="2"/>
+<text x="262.5" y="676.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">p2 = A[i,2] × B[2,j]   | R32</text>
+<rect x="100" y="707" width="325" height="46" rx="8" fill="#e7f1fa" stroke="#354655" stroke-width="2"/>
+<text x="262.5" y="736.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">p3 = A[i,3] × B[3,j]   | R32</text>
+<rect x="100" y="767" width="325" height="46" rx="8" fill="#e7f1fa" stroke="#354655" stroke-width="2"/>
+<text x="262.5" y="796.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">p4 = A[i,4] × B[4,j]   | R32</text>
+<rect x="100" y="827" width="325" height="46" rx="8" fill="#e7f1fa" stroke="#354655" stroke-width="2"/>
+<text x="262.5" y="856.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">p5 = A[i,5] × B[5,j]   | R32</text>
+<rect x="100" y="887" width="325" height="46" rx="8" fill="#fff0d6" stroke="#354655" stroke-width="2"/>
+<text x="262.5" y="916.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">p6 = A[i,6] × B[6,j]   | R32</text>
+<rect x="535" y="556" width="240" height="48" rx="8" fill="#f0f4f6" stroke="#354655" stroke-width="2"/>
+<text x="655.0" y="586.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">p0 + p1  | R33</text>
+<rect x="535" y="676" width="240" height="48" rx="8" fill="#f0f4f6" stroke="#354655" stroke-width="2"/>
+<text x="655.0" y="706.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">p2 + p3  | R33</text>
+<rect x="535" y="796" width="240" height="48" rx="8" fill="#f0f4f6" stroke="#354655" stroke-width="2"/>
+<text x="655.0" y="826.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">p4 + p5  | R33</text>
+<rect x="535" y="886" width="240" height="48" rx="8" fill="#f0f4f6" stroke="#354655" stroke-width="2"/>
+<text x="655.0" y="916.8" font-size="20" text-anchor="middle" font-weight="normal" fill="#182b3b">p6: extensão  | R33</text>
+<path d="M425,550 H475 V571 H535" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="535,571 525,566 525,576" fill="#354655"/>
+<path d="M425,610 H495 V589 H535" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="535,589 525,584 525,594" fill="#354655"/>
+<path d="M425,670 H475 V691 H535" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="535,691 525,686 525,696" fill="#354655"/>
+<path d="M425,730 H495 V709 H535" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="535,709 525,704 525,714" fill="#354655"/>
+<path d="M425,790 H475 V811 H535" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="535,811 525,806 525,816" fill="#354655"/>
+<path d="M425,850 H495 V829 H535" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="535,829 525,824 525,834" fill="#354655"/>
+<path d="M425,910 H475 V910 H535" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="535,910 525,905 525,915" fill="#354655"/>
+<rect x="875" y="612" width="235" height="56" rx="8" fill="#f0f4f6" stroke="#354655" stroke-width="2"/>
+<text x="992.5" y="633.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">(p0+p1)+(p2+p3)</text>
+<text x="992.5" y="659.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">R34</text>
+<rect x="875" y="837" width="235" height="56" rx="8" fill="#f0f4f6" stroke="#354655" stroke-width="2"/>
+<text x="992.5" y="858.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">(p4+p5)+p6</text>
+<text x="992.5" y="884.46" font-size="19" text-anchor="middle" font-weight="normal" fill="#182b3b">R34</text>
+<path d="M775,580 H815 V628 H875" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="875,628 865,623 865,633" fill="#354655"/>
+<path d="M775,700 H835 V652 H875" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="875,652 865,647 865,657" fill="#354655"/>
+<path d="M775,820 H815 V853 H875" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="875,853 865,848 865,858" fill="#354655"/>
+<path d="M775,910 H835 V877 H875" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="875,877 865,872 865,882" fill="#354655"/>
+<rect x="1230" y="718" width="280" height="94" rx="8" fill="#e8f3ec" stroke="#354655" stroke-width="2"/>
+<text x="1370.0" y="757.82" font-size="23" text-anchor="middle" font-weight="normal" fill="#182b3b">Soma final → C[i,j]</text>
+<text x="1370.0" y="787.82" font-size="23" text-anchor="middle" font-weight="normal" fill="#182b3b">R35 · com sinal</text>
+<path d="M1110,640 H1160 V749 H1230" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="1230,749 1220,744 1220,754" fill="#354655"/>
+<path d="M1110,865 H1180 V781 H1230" fill="none" stroke="#354655" stroke-width="2"/>
+<polygon points="1230,781 1220,776 1220,786" fill="#354655"/>
+<text x="100" y="970" font-size="22" text-anchor="start" font-weight="bold" fill="#182b3b">p0…p5: DSPs (3 blocos por célula)</text>
+<text x="790" y="970" font-size="22" text-anchor="start" font-weight="bold" fill="#182b3b">p6: multiplicador em lógica programável (ALMs)</text>
+<text x="55" y="1016" font-size="23" text-anchor="start" font-weight="normal" fill="#182b3b">Total: 343 produtos simultâneos · 147 DSPs · 49 multiplicadores em ALMs · sem reutilização entre termos</text>
+<text x="55" y="1061" font-size="19" text-anchor="start" font-weight="normal" fill="#506272">Ilustração funcional derivada de matrix7_mm.v. Não é uma exportação do RTL Viewer nem um mapa físico de colocação.</text>
+</g></svg>

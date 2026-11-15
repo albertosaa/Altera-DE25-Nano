@@ -182,6 +182,36 @@ combina DSPs e lógica programável para executar todos os produtos em paralelo.
 
 ## 7. Arquitetura e latência do circuito
 
+![Esquema funcional do multiplicador e detalhe de uma célula](../img/matrix7x7/esquema_funcional_7x7.svg)
+
+**Figura 1 — Arquitetura funcional e detalhe de uma célula de cálculo.** A parte
+superior mostra o ARM, a ponte lightweight e os bancos de registradores A/B e C.
+A parte inferior detalha uma saída `C[i,j]`, cuja estrutura é replicada para os
+49 pares de índices da matriz resultado.
+
+Os produtos `p0` a `p5`, em azul, usam três DSPs por célula; `p6`, em amarelo,
+usa lógica programável. No conjunto, são 343 produtos simultâneos: 294 em
+147 DSPs e 49 em ALMs. As cores são auxiliares; os rótulos também identificam
+o mapeamento. As setas indicam o fluxo de dados.
+
+`R32`, `R33`, `R34` e `R35` identificam registradores e suas larguras em bits.
+O caminho de `p6` inclui extensão de sinal para manter o alinhamento com as
+outras somas. Os quatro estágios correspondem aos quatro ciclos do contador:
+40 ns nominais com clock de 100 MHz, excluindo transferências ARM–FPGA.
+
+A figura é uma ilustração funcional derivada de
+[`matrix7_mm.v`](../fpga/MatrixMultiplication7x7/rtl/matrix7_mm.v), não uma
+exportação do Quartus nem um mapa de colocação física. Otimizações e retiming
+podem alterar a organização física dos elementos preservando o comportamento.
+O desenho é reproduzível pelo
+[script gerador](../scripts/gerar_esquema_matrix7x7.py).
+
+Para impressão, use o [SVG vetorial](../img/matrix7x7/esquema_funcional_7x7.svg)
+em A4 paisagem, ajustado à área imprimível. Há uma
+[versão PNG de 3200×2200 pixels](../img/matrix7x7/esquema_funcional_7x7.png) para
+inserção em outros documentos e um
+[guia para exportar esquemas no Quartus](GUIA_ESQUEMAS_QUARTUS.md).
+
 O circuito tem quatro etapas registradas, contadas a partir do START aceito:
 
 | Ciclo | Operação conceitual no RTL |
